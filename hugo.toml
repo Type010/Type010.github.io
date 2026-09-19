@@ -398,6 +398,8 @@ copyright = ""
     head = ["custom/head.html"]
     # 注入文章侧边栏，用于显示一言
     aside = ["custom/aside.html"]
+    # 注入首页 profile 区块，用于头像后的贪吃蛇叠加层
+    profile = ["custom/profile.html"]
 
   # ---------------------------------------------------------------------------
   # 图片：自动压缩/缩放（配合上方 [imaging] 的 quality 设置）

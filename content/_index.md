@@ -4,8 +4,3 @@ date: 2026-09-19T10:00:00+08:00
 draft: false
 description: MooeのBlog——记录学习、技术与生活的个人笔记本。
 ---
-
-<div class="github-snake">
-  <img class="snake-light" src="https://cdn.jsdelivr.net/gh/Type010/Type010.github.io@output/github-snake.svg" alt="GitHub 贡献图" loading="lazy">
-  <img class="snake-dark" src="https://cdn.jsdelivr.net/gh/Type010/Type010.github.io@output/github-snake-dark.svg" alt="GitHub 贡献图" loading="lazy">
-</div>

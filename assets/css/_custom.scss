@@ -101,20 +101,49 @@ div::-webkit-scrollbar {
   }
 }
 
-// ---- 首页 GitHub 贡献图（贪吃蛇）----
-// 注意：主题自带 `.single .content img { display: block; max-width: 100% }`，
-// 其特异性比 `.github-snake img` 高，会压掉这里的规则，所以必须加 !important
-.github-snake {
-  margin: 0.2rem 0;
-  text-align: center;
+// ============================================================
+// 首页：头像 + 叠加在后面的贪吃蛇动画
+// 蛇图由 layouts/_partials/custom/profile.html 注入到 .home-profile 内
+// ============================================================
+
+.home-profile {
+  position: relative; // 作为蛇图的定位参照
+}
+
+// 头像压在蛇图上方，并设为半透明
+.home-avatar {
+  position: relative;
+  z-index: 1;
+
+  img {
+    opacity: 0.72;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// 贪吃蛇：绝对定位叠在头像位置，横向铺开
+.avatar-snake {
+  position: absolute;
+  top: 36px; // 与头像垂直居中对齐，改这里可上下微调
+  left: 50%;
+  transform: translateX(-50%);
+  width: 480px;
+  max-width: 92vw;
+  z-index: 0; // 在头像后面
+  pointer-events: none;
 
   img {
     display: block !important;
     width: 100% !important;
-    max-width: 720px !important;
+    max-width: none !important;
     height: auto !important;
-    max-height: none !important; // 不受文章图片的高度限制影响
-    margin: 0 auto !important;
+    max-height: none !important;
+    margin: 0 !important;
+    opacity: 0.9;
   }
 
   .snake-dark {
@@ -122,11 +151,10 @@ div::-webkit-scrollbar {
   }
 }
 
-// 深色模式下换成深色版（顶层选择器，见文件开头的说明）
-[data-theme="dark"] .github-snake .snake-light {
+[data-theme="dark"] .avatar-snake .snake-light {
   display: none !important;
 }
 
-[data-theme="dark"] .github-snake .snake-dark {
+[data-theme="dark"] .avatar-snake .snake-dark {
   display: block !important;
 }

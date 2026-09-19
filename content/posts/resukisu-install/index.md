@@ -15,11 +15,11 @@ tags:
 
 ## 第一步
 
-下载并安装 **resukisu** 和 **stellar**。
+下载并安装 **kernelsu** 和 **stellar**。
 
 ## 第二步
 
-在底部链接中下载自己设备的 **exploit** 和 **kernelsu.ko**，并放入 `/data/local/tmp` 目录（需要 MT 管理器）。
+在[网盘](http://op.mooe.top)中下载自己设备的 **exploit** 和 **kernelsu.ko**，并放入 `/data/local/tmp` 目录（需要 MT 管理器）。
 
 ## 第三步
 
@@ -58,4 +58,4 @@ ROOT_CMD='SO=$(find /data/app -type f -name libksud.so 2>/dev/null | head -1); [
 
 ## 第七步
 
-冷启动 resukisu。
+冷启动 kernelsu。
