@@ -66,12 +66,17 @@
 
   let pressed = false;
   let lastSpawn = 0;
+  let running = false;
 
   function spawn(x, y) {
     const now = Date.now();
     if (now - lastSpawn < 40) return; // 节流，避免粒子过多
     lastSpawn = now;
     for (let i = 0; i < 10; i++) balls.push(new Ball(x, y));
+    if (!running) {
+      running = true;
+      window.requestAnimationFrame(loop);
+    }
   }
 
   document.addEventListener("mousedown", function (e) {
@@ -85,7 +90,8 @@
     if (pressed) spawn(e.clientX, e.clientY);
   });
 
-  (function loop() {
+  /* 只在存在粒子时渲染，空闲时完全停止，避免常驻动画占用 CPU */
+  function loop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (let i = balls.length - 1; i >= 0; i--) {
       if (!balls[i].update()) {
@@ -94,8 +100,9 @@
       }
       balls[i].draw();
     }
-    window.requestAnimationFrame(loop);
-  })();
+    running = balls.length > 0;
+    if (running) window.requestAnimationFrame(loop);
+  }
 })();
 
 /* ---- 控制台打印 ---- */

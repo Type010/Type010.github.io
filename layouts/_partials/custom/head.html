@@ -1,3 +1,5 @@
-{{- /* 自定义 head 内容：霞鹜文楷字体（中文网字计划 CDN，按字符集分片加载） */ -}}
-<link rel="preconnect" href="https://chinese-fonts-cdn.deno.dev">
-<link rel="stylesheet" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkai/dist/LXGWWenKai-Light/result.css">
+{{- /* 自定义 head 内容：霞鹜文楷（jsdelivr CDN，按 unicode-range 分片按需加载）
+     原参考文章使用的 chinese-fonts-cdn.deno.dev 已失效，改用 lxgw-wenkai-webfont 包 */ -}}
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-light.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/lxgwwenkai-bold.css">
