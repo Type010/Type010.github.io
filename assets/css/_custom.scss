@@ -12,6 +12,21 @@ body {
   font-size: 1rem;
 }
 
+// ---- 整站网格背景 ----
+body {
+  background-image:
+    linear-gradient(90deg, rgba(60, 10, 30, 0.04) 3%, transparent 0),
+    linear-gradient(1turn, rgba(60, 10, 30, 0.04) 3%, transparent 0);
+  background-size: 20px 20px;
+  background-position: center;
+
+  html[data-theme="dark"] & {
+    background-image:
+      linear-gradient(90deg, rgba(195, 245, 215, 0.04) 3%, transparent 0),
+      linear-gradient(1turn, rgba(195, 245, 215, 0.04) 3%, transparent 0);
+  }
+}
+
 // ---- div 滚动条 ----
 div {
   scrollbar-width: none; // 火狐隐藏滚动条
@@ -22,24 +37,10 @@ div::-webkit-scrollbar {
   height: 1px;
 }
 
-// ---- 文章正文网格背景 ----
+// ---- 文章副标题 ----
 .single {
   .single-subtitle {
     color: #57606a;
-  }
-
-  .content {
-    background-image:
-      linear-gradient(90deg, rgba(60, 10, 30, 0.04) 3%, transparent 0),
-      linear-gradient(1turn, rgba(60, 10, 30, 0.04) 3%, transparent 0);
-    background-size: 20px 20px;
-    background-position: center;
-
-    [data-theme="dark"] & {
-      background-image:
-        linear-gradient(90deg, rgba(195, 245, 215, 0.04) 3%, transparent 0),
-        linear-gradient(1turn, rgba(195, 245, 215, 0.04) 3%, transparent 0);
-    }
   }
 }
 

@@ -282,7 +282,7 @@ copyright = ""
       pre = "<i class='fa-solid fa-feather-pointed'></i>"
       typeit = false
     [params.header.subtitle]
-      name = "记录，让知识沉淀"
+      name = "这是一个小小小笔记本"
       typeit = true
 
   # ---------------------------------------------------------------------------
@@ -314,7 +314,7 @@ copyright = ""
       # 头像地址
       avatarURL = "https://avatars.githubusercontent.com/u/229056701?v=4"
       title = "MooeのBlog"
-      subtitle = "记录，让知识沉淀"
+      subtitle = "这是一个小小小笔记本"
       typeit = true
       social = true
     [params.home.posts]
