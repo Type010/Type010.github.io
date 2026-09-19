@@ -250,9 +250,13 @@ copyright = ""
   description = "记录学习、技术与生活的个人博客"
   # 站点关键词
   keywords = ["Hugo", "FixIt", "博客"]
+  # 分享到社交平台时的默认配图
+  images = ["https://avatars.githubusercontent.com/u/229056701?v=4"]
   # 资源指纹：给 CSS/JS 文件名加上内容哈希，文件一改名字就变，
   # 浏览器和 CDN 都不会再命中旧缓存
   fingerprint = "sha256"
+  # 外链自动加一个"跳转"小图标
+  externalIcon = true
   # 默认主题 ["light", "dark", "auto"]
   defaultTheme = "auto"
   # 日期格式
@@ -286,9 +290,93 @@ copyright = ""
   [params.search]
     enable = true
     type = "fuse"
+    # 索引的内容长度，设大一些让长文章也能被完整搜到
+    contentLength = 9999000
     placeholder = "搜索文章…"
     maxResultLength = 10
     snippetLength = 30
+
+    # 匹配策略：放宽阈值并忽略匹配位置，中文短词也能搜到
+    [params.search.fuse]
+      isCaseSensitive = false
+      minMatchCharLength = 2
+      findAllMatches = false
+      location = 0
+      threshold = 0.3
+      distance = 100
+      ignoreLocation = true
+      useExtendedSearch = true
+      ignoreFieldNorm = true
+
+  # ---------------------------------------------------------------------------
+  # 面包屑导航（文章页顶部显示当前路径）
+  # ---------------------------------------------------------------------------
+  [params.breadcrumb]
+    enable = true
+    sticky = true
+    showHome = true
+
+  # ---------------------------------------------------------------------------
+  # 标签云（标签页按热度用不同字号展示）
+  # ---------------------------------------------------------------------------
+  [params.tagcloud]
+    enable = true
+    min = 14
+    max = 32
+    peakCount = 10
+    orderby = "name"
+
+  # ---------------------------------------------------------------------------
+  # 阅读进度条（页面顶部）
+  # ---------------------------------------------------------------------------
+  [params.readingProgress]
+    enable = true
+    start = "left"
+    position = "top"
+    reversed = false
+    light = "#0076ff"
+    dark = "#fff"
+    height = "2px"
+
+  # ---------------------------------------------------------------------------
+  # 返回顶部按钮上显示滚动百分比
+  # ---------------------------------------------------------------------------
+  [params.backToTop]
+    enable = true
+    scrollpercent = true
+
+  # ---------------------------------------------------------------------------
+  # 打字机动画循环播放
+  # ---------------------------------------------------------------------------
+  [params.typeit]
+    speed = 100
+    cursorSpeed = 1000
+    cursorChar = "|"
+    duration = -1
+    loop = true
+
+  # ---------------------------------------------------------------------------
+  # 盘古之白：自动在中文与英文、数字之间留出细缝，中文排版更舒服
+  # ---------------------------------------------------------------------------
+  [params.pangu]
+    enable = true
+    selector = "article"
+
+  # ---------------------------------------------------------------------------
+  # 关闭 Cookie 同意横幅
+  # ---------------------------------------------------------------------------
+  [params.cookieconsent]
+    enable = false
+
+  # ---------------------------------------------------------------------------
+  # 在列表页标记最近更新的文章
+  # ---------------------------------------------------------------------------
+  [params.recentlyUpdated]
+    archives = true
+    section = true
+    list = true
+    days = 30
+    maxCount = 10
 
   # ---------------------------------------------------------------------------
   # 顶部导航栏
@@ -352,6 +440,20 @@ copyright = ""
   [params.page]
     # 图片点击放大，"force" 表示所有图片都可放大（不受是否有 title 限制）
     lightgallery = "force"
+    # 页面宽度 ["narrow", "normal", "wide"]
+    pageStyle = "wide"
+    # 自动书签：关掉页面时记住阅读位置，下次打开跳回原处
+    autoBookmark = true
+    # 正文末尾的结束标志
+    endFlag = "-----（完）-----"
+    # 即时预加载：点站内链接时提前把目标页面载入
+    instantPage = true
+    # 文章发布久了在开头给出"内容可能过时"的提醒
+    [params.page.expirationReminder]
+      enable = true
+      reminder = 90
+      warning = 180
+      closeComment = false
     # 文章目录（右侧）
     [params.page.toc]
       enable = true
@@ -376,7 +478,8 @@ copyright = ""
   [params.codeblock]
     wrapper = true
     mode = "classic"
-    maxShownLines = 10
+    # 长代码块默认展开的行数
+    maxShownLines = 64
     copyable = true
     lineNosToggler = true
     lineWrapToggler = true
