@@ -346,6 +346,8 @@ copyright = ""
   # 文章页面
   # ---------------------------------------------------------------------------
   [params.page]
+    # 图片点击放大，"force" 表示所有图片都可放大（不受是否有 title 限制）
+    lightgallery = "force"
     # 文章目录（右侧）
     [params.page.toc]
       enable = true

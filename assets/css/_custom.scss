@@ -78,6 +78,16 @@ html[data-theme="dark"] {
   }
 }
 
+// ---- 文章内图片：限制高度，避免手机长截图占满整屏 ----
+// 只对过高的图生效，普通横图仍是原来的宽度；点开可放大看细节
+.single .content img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  max-height: 620px;
+  margin: 1.25rem auto;
+}
+
 // ---- 侧边栏「一言」 ----
 .hitokoto-content {
   font-size: 0.95rem;
