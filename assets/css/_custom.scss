@@ -110,7 +110,14 @@ div::-webkit-scrollbar {
   position: relative; // 作为蛇图的定位参照
 }
 
-// 头像压在蛇图上方，并设为半透明（宽度放大 1.5 倍：6rem → 9rem）
+// 头像容器压在蛇图上方：必须有定位和 z-index，
+// 否则头像作为普通元素会被已定位的蛇图（z-index: 0）盖住
+.home-avatar {
+  position: relative;
+  z-index: 1;
+}
+
+// 头像半透明，并放大 1.5 倍（6rem → 9rem）
 .home-profile .home-avatar img {
   width: 9rem !important;
   height: auto !important;
