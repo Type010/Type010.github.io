@@ -1,0 +1,361 @@
+# =============================================================================
+# Hugo 站点配置（FixIt 主题）
+# 主题文档：https://fixit.lruihao.cn/
+#
+# 说明：FixIt 以 Hugo Modules 方式引入时，主题自带的 hugo.toml 只有
+# params / menus / outputFormats 会被合并到站点。markup、outputs、taxonomies
+# 等必须由站点显式声明，否则会退化成 Hugo 默认行为（代码高亮用内联样式、
+# 数学公式不渲染、归档页与搜索索引不生成）。
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# 基础配置
+# -----------------------------------------------------------------------------
+# 站点根地址，对应用户主页仓库（<用户名>.github.io）的 Pages 地址
+# 绑定自定义域名后需同步修改
+baseURL = "https://type010.github.io/"
+# 网站标题
+title = "我的博客"
+# 使用 Hugo Modules 方式引入 FixIt 主题
+theme = "github.com/hugo-fixit/FixIt"
+
+# 默认语言，可选 ["en", "zh-cn", "fr", "pl", ...]
+defaultContentLanguage = "zh-cn"
+# 站点语言代码，仅在这里 CN 大写
+locale = "zh-CN"
+# 站点语言名称
+languageName = "简体中文"
+# 是否包含中日韩文字，中文站点建议开启
+hasCJKLanguage = true
+# 是否生成 robots.txt
+enableRobotsTXT = true
+# 是否启用 emoji 语法
+enableEmoji = true
+# 是否启用 Git 提交信息（时间、作者等），需要站点是 Git 仓库且有提交记录
+# 开启后文章的「更新于」取最后一次提交时间；CI 构建时 checkout 需带完整历史
+enableGitInfo = true
+# 版权信息，用于 SEO schema
+copyright = ""
+
+# -----------------------------------------------------------------------------
+# 分页与摘要
+# -----------------------------------------------------------------------------
+[pagination]
+  # 列表页每页文章数
+  pagerSize = 10
+
+[summary]
+  length = 200
+
+# -----------------------------------------------------------------------------
+# Front Matter：lastmod 依次尝试 lastmod > git > 文件修改时间
+# -----------------------------------------------------------------------------
+[frontmatter]
+  _merge = "shallow"
+  lastmod = ["lastmod", ":git", ":fileModTime", ":default"]
+
+# -----------------------------------------------------------------------------
+# 图片处理
+# -----------------------------------------------------------------------------
+[imaging]
+  _merge = "shallow"
+
+  [imaging.jpeg]
+    quality = 75
+
+  [imaging.webp]
+    quality = 75
+
+# =============================================================================
+# 菜单配置
+# 文档：https://fixit.lruihao.cn/documentation/basics/#menu-configuration
+# =============================================================================
+
+[menus]
+
+[[menus.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 1
+  [menus.main.params]
+    icon = "fa-solid fa-pencil-alt"
+
+[[menus.main]]
+  identifier = "archives"
+  name = "归档"
+  url = "/archives/"
+  weight = 2
+  [menus.main.params]
+    icon = "fa-solid fa-archive"
+
+[[menus.main]]
+  identifier = "categories"
+  name = "分类"
+  url = "/categories/"
+  weight = 3
+  [menus.main.params]
+    icon = "fa-solid fa-folder-tree"
+
+[[menus.main]]
+  identifier = "tags"
+  name = "标签"
+  url = "/tags/"
+  weight = 4
+  [menus.main.params]
+    icon = "fa-solid fa-tags"
+
+[[menus.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 5
+  [menus.main.params]
+    icon = "fa-solid fa-circle-info"
+
+# =============================================================================
+# Markdown 渲染
+# 与 FixIt 主题保持一致，其中 passthrough（数学公式）与 noClasses（代码高亮
+# 明暗主题配色）是 FixIt 正常工作必需的
+# =============================================================================
+
+[markup]
+  _merge = "shallow"
+
+  [markup.highlight]
+    # 必须项：FixIt 通过 class 方式为代码块提供明暗主题配色
+    codeFences = true
+    noClasses = false
+    anchorLineNos = false
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+
+  [markup.goldmark]
+    duplicateResourceFiles = false
+
+    [markup.goldmark.extensions]
+      definitionList = true
+      footnote = true
+      linkify = true
+      linkifyProtocol = "https"
+      # 关闭默认删除线，改由下方的 extras.delete 渲染为 <del>
+      strikethrough = false
+      table = true
+      taskList = true
+
+      [markup.goldmark.extensions.typographer]
+        enable = true
+
+      # 扩展语法：==高亮==、++插入++、~~删除~~、~下标~、^上标^
+      [markup.goldmark.extensions.extras]
+
+      [markup.goldmark.extensions.extras.delete]
+        enable = true
+
+      [markup.goldmark.extensions.extras.insert]
+        enable = true
+
+      [markup.goldmark.extensions.extras.mark]
+        enable = true
+
+      [markup.goldmark.extensions.extras.subscript]
+        enable = true
+
+      [markup.goldmark.extensions.extras.superscript]
+        enable = true
+
+      # 必须项：数学公式依赖 passthrough
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [['\[', '\]'], ['$$', '$$']]
+          inline = [['\(', '\)'], ['$', '$']]
+
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+        title = true
+
+    [markup.goldmark.renderer]
+      hardWraps = false
+      # 允许在 Markdown 中直接写 HTML
+      unsafe = true
+      xhtml = false
+
+# -----------------------------------------------------------------------------
+# 站点地图
+# -----------------------------------------------------------------------------
+[sitemap]
+  changefreq = "weekly"
+  disable = false
+  filename = "sitemap.xml"
+  priority = 0.5
+
+# -----------------------------------------------------------------------------
+# 第三方内容隐私
+# -----------------------------------------------------------------------------
+[privacy]
+  [privacy.x]
+    enableDNT = true
+
+  [privacy.youtube]
+    privacyEnhanced = true
+
+# -----------------------------------------------------------------------------
+# 分类法
+# -----------------------------------------------------------------------------
+[taxonomies]
+  _merge = "shallow"
+  category = "categories"
+  tag = "tags"
+  collection = "collections"
+
+# -----------------------------------------------------------------------------
+# 输出格式
+# archives/offline/search 由主题的 outputFormats 提供，这里只需引用
+# -----------------------------------------------------------------------------
+[outputs]
+  home = ["html", "rss", "archives", "offline", "search"]
+  page = ["html", "markdown"]
+  section = ["html", "rss"]
+  taxonomy = ["html"]
+  term = ["html", "rss"]
+
+# =============================================================================
+# 主题参数
+# 文档：https://fixit.lruihao.cn/documentation/basics/#theme-configuration
+# 这里只写与主题默认值不同的部分，其余保持 FixIt 默认
+# =============================================================================
+
+[params]
+  # 站点描述
+  description = "记录学习、技术与生活的个人博客"
+  # 站点关键词
+  keywords = ["Hugo", "FixIt", "博客"]
+  # 默认主题 ["light", "dark", "auto"]
+  defaultTheme = "auto"
+  # 日期格式
+  dateFormat = "2006-01-02"
+  # 是否在每页标题后追加站点标题
+  withSiteTitle = true
+  # 标题分隔符
+  titleDelimiter = "-"
+
+  # ---------------------------------------------------------------------------
+  # 作者信息
+  # ---------------------------------------------------------------------------
+  [params.author]
+    name = "博主"
+    email = ""
+    link = ""
+    avatar = ""
+
+  # ---------------------------------------------------------------------------
+  # 文章页的「查看源码 / 编辑此页 / 反馈问题」链接指向的仓库
+  # ---------------------------------------------------------------------------
+  [params.gitInfo]
+    repo = "https://github.com/Type010/Type010.github.io"
+    branch = "main"
+    # 内容目录相对于仓库根目录的路径
+    dir = "content"
+
+  # ---------------------------------------------------------------------------
+  # 搜索配置（本地 Fuse 搜索，无需第三方服务）
+  # ---------------------------------------------------------------------------
+  [params.search]
+    enable = true
+    type = "fuse"
+    placeholder = "搜索文章…"
+    maxResultLength = 10
+    snippetLength = 30
+
+  # ---------------------------------------------------------------------------
+  # 顶部导航栏
+  # ---------------------------------------------------------------------------
+  [params.header]
+    [params.header.title]
+      # 导航栏标题，留空则使用站点标题
+      name = "我的博客"
+      # 标题前的图标
+      pre = "<i class='fa-solid fa-feather-pointed'></i>"
+      typeit = false
+    [params.header.subtitle]
+      name = "记录，让知识沉淀"
+      typeit = true
+
+  # ---------------------------------------------------------------------------
+  # 页脚
+  # ---------------------------------------------------------------------------
+  [params.footer]
+    enable = true
+    copyright = true
+    author = true
+    # 站点创建年份
+    since = "2026"
+    [params.footer.powered]
+      enable = true
+      hugoLogo = true
+      themeLogo = true
+    [params.footer.siteTime]
+      enable = true
+      animate = true
+      icon = "fa-solid fa-heartbeat"
+      pre = "本站已运行 "
+      value = "2026-01-01T00:00:00+08:00"
+
+  # ---------------------------------------------------------------------------
+  # 首页
+  # ---------------------------------------------------------------------------
+  [params.home]
+    [params.home.profile]
+      enable = true
+      # 头像地址，放到 static/images/ 目录下
+      avatarURL = ""
+      title = "我的博客"
+      subtitle = "记录，让知识沉淀"
+      typeit = true
+      social = true
+    [params.home.posts]
+      enable = true
+      paginate = 6
+
+  # ---------------------------------------------------------------------------
+  # 社交链接，按需填写
+  # ---------------------------------------------------------------------------
+  [params.social]
+    GitHub = ""
+
+  # ---------------------------------------------------------------------------
+  # 文章页面
+  # ---------------------------------------------------------------------------
+  [params.page]
+    # 文章目录（右侧）
+    [params.page.toc]
+      enable = true
+      keepStatic = false
+      auto = true
+      ordered = true
+    # 数学公式（KaTeX 服务端渲染）
+    [params.page.math]
+      enable = true
+      type = "katex"
+    # 相关文章
+    [params.page.related]
+      enable = true
+      count = 5
+    # 评论，接入评论系统后把 enable 改成 true
+    [params.page.comment]
+      enable = false
+
+  # ---------------------------------------------------------------------------
+  # 代码块外观
+  # ---------------------------------------------------------------------------
+  [params.codeblock]
+    wrapper = true
+    mode = "classic"
+    maxShownLines = 10
+    copyable = true
+    lineNosToggler = true
+    lineWrapToggler = true

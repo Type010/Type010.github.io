@@ -1,0 +1,13 @@
+# Hugo 构建产物
+public/
+resources/_gen/
+.hugo_build.lock
+
+# Node（如果使用 npm 管理前端依赖）
+node_modules/
+
+# 编辑器与系统文件
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
