@@ -164,3 +164,14 @@ div::-webkit-scrollbar {
 [data-theme="dark"] .avatar-snake .snake-dark {
   display: block !important;
 }
+
+// ---- 移动端 / 平板（≤960px）：头像缩小一半，蛇图重新对齐 ----
+@media only screen and (max-width: 960px) {
+  .home-profile .home-avatar img {
+    width: 6rem !important; // 桌面端 12rem 的一半
+  }
+
+  .avatar-snake {
+    top: 58px; // 头像变小后中心上移，这里同步调整
+  }
+}
