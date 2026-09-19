@@ -278,8 +278,8 @@ copyright = ""
     [params.header.title]
       # 导航栏标题，留空则使用站点标题
       name = "MooeのBlog"
-      # 标题前的图标
-      pre = "<i class='fa-solid fa-feather-pointed'></i>"
+      # 标题前的图标：GitHub 图标 + 跳转
+      pre = "<a href='https://github.com/Type010' target='_blank' rel='noopener noreferrer' class='header-github-link' title='GitHub'><i class='fa-brands fa-github'></i></a>"
       typeit = false
     [params.header.subtitle]
       name = "这是一个小小小笔记本"
@@ -294,6 +294,8 @@ copyright = ""
     author = true
     # 站点创建年份
     since = "2026"
+    # 许可协议（支持 HTML），显示在页脚
+    license = '<a rel="license" target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>'
     [params.footer.powered]
       enable = true
       hugoLogo = true
