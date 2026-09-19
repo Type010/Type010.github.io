@@ -112,8 +112,10 @@ div::-webkit-scrollbar {
 
 // 头像容器压在蛇图上方：必须有定位和 z-index，
 // 否则头像作为普通元素会被已定位的蛇图（z-index: 0）盖住
+// top 用于把头像整体往下微调
 .home-avatar {
   position: relative;
+  top: 8px;
   z-index: 1;
 }
 
