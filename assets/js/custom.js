@@ -41,3 +41,43 @@
     }
   });
 })();
+
+/* ---- 移动端顶栏：向上滚动立即展开 ----
+ * 主题自带的 auto 模式依赖较大的滚动量，首页内容较短时（总共只能滚动几百像素）
+ * 上滑往往触发不了展开，这里补一个更灵敏的判断。 */
+(function mobileHeaderAutoShow() {
+  const header = document.getElementById("header-mobile");
+  if (!header) return;
+
+  const THRESHOLD = 4; // 上滑超过这个像素数就展开
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  function update() {
+    const y = window.scrollY;
+    const diff = y - lastY;
+
+    if (diff < -THRESHOLD) {
+      // 向上滚动：展开
+      header.classList.remove("animate__fadeOutUp");
+      header.classList.add("animate__fadeInDown");
+    } else if (diff > THRESHOLD && y > 80) {
+      // 向下滚动且不在顶部：收起
+      header.classList.remove("animate__fadeInDown");
+      header.classList.add("animate__fadeOutUp");
+    }
+
+    lastY = y;
+    ticking = false;
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    },
+    { passive: true },
+  );
+})();
