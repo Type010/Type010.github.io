@@ -15,7 +15,7 @@
 # 绑定自定义域名后需同步修改
 baseURL = "https://type010.github.io/"
 # 网站标题
-title = "我的博客"
+title = "MooeのBlog"
 # 使用 Hugo Modules 方式引入 FixIt 主题
 theme = "github.com/hugo-fixit/FixIt"
 
@@ -247,10 +247,10 @@ copyright = ""
   # 作者信息
   # ---------------------------------------------------------------------------
   [params.author]
-    name = "博主"
+    name = "Type010"
     email = ""
-    link = ""
-    avatar = ""
+    link = "https://github.com/Type010"
+    avatar = "https://avatars.githubusercontent.com/u/229056701?v=4"
 
   # ---------------------------------------------------------------------------
   # 文章页的「查看源码 / 编辑此页 / 反馈问题」链接指向的仓库
@@ -277,7 +277,7 @@ copyright = ""
   [params.header]
     [params.header.title]
       # 导航栏标题，留空则使用站点标题
-      name = "我的博客"
+      name = "MooeのBlog"
       # 标题前的图标
       pre = "<i class='fa-solid fa-feather-pointed'></i>"
       typeit = false
@@ -311,9 +311,9 @@ copyright = ""
   [params.home]
     [params.home.profile]
       enable = true
-      # 头像地址，放到 static/images/ 目录下
-      avatarURL = ""
-      title = "我的博客"
+      # 头像地址
+      avatarURL = "https://avatars.githubusercontent.com/u/229056701?v=4"
+      title = "MooeのBlog"
       subtitle = "记录，让知识沉淀"
       typeit = true
       social = true
@@ -359,3 +359,22 @@ copyright = ""
     copyable = true
     lineNosToggler = true
     lineWrapToggler = true
+
+  # ---------------------------------------------------------------------------
+  # Admonition 提示框
+  # 该功能为 FixIt 主题内置（不存在单独的 fixit-admonition 组件），此处只扩展
+  # 自定义类型：<类型> = "<FontAwesome 图标>"，内容里用 > [!类型] 调用
+  # ---------------------------------------------------------------------------
+  [params.admonition]
+    ban = "fa-solid fa-ban"
+    idea = "fa-solid fa-lightbulb"
+
+  # ---------------------------------------------------------------------------
+  # 自定义 partial 挂载点
+  # 文件放在站点 layouts/_partials/ 下，此处填相对该目录的路径
+  # ---------------------------------------------------------------------------
+  [params.customPartials]
+    # 注入 <head>，用于引入自定义字体
+    head = ["custom/head.html"]
+    # 注入文章侧边栏，用于显示一言
+    aside = ["custom/aside.html"]

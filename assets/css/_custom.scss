@@ -1,0 +1,57 @@
+// ==============================
+// 自定义样式
+// 参考：https://geekswg.js.cool/posts/2023/fixit-beautification/
+// ==============================
+
+// ---- 全局字体（字体文件由 layouts/_partials/custom/head.html 引入）----
+html,
+body {
+  font-family: "LXGW WenKai Light", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+// ---- div 滚动条 ----
+div {
+  scrollbar-width: none; // 火狐隐藏滚动条
+}
+
+div::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+// ---- 文章正文网格背景 ----
+.single {
+  .single-subtitle {
+    color: #57606a;
+  }
+
+  .content {
+    background-image:
+      linear-gradient(90deg, rgba(60, 10, 30, 0.04) 3%, transparent 0),
+      linear-gradient(1turn, rgba(60, 10, 30, 0.04) 3%, transparent 0);
+    background-size: 20px 20px;
+    background-position: center;
+
+    [data-theme="dark"] & {
+      background-image:
+        linear-gradient(90deg, rgba(195, 245, 215, 0.04) 3%, transparent 0),
+        linear-gradient(1turn, rgba(195, 245, 215, 0.04) 3%, transparent 0);
+    }
+  }
+}
+
+// ---- 侧边栏「一言」 ----
+.hitokoto-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--fi-secondary);
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}

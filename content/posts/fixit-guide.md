@@ -43,6 +43,14 @@ func main() {
 > [!WARNING]
 > 修改 `hugo.toml` 后需要重启 `hugo server` 才会生效（配置文件不在热重载范围内）。
 
+在 `hugo.toml` 的 `params.admonition` 里注册图标后，还可以使用自定义类型：
+
+> [!IDEA]
+> 自定义的「想法」提示框。
+
+> [!BAN]
+> 自定义的「禁止」提示框。
+
 ## 数学公式
 
 FixIt 默认使用 KaTeX 在构建时渲染公式：
