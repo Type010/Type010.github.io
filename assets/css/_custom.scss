@@ -110,28 +110,25 @@ div::-webkit-scrollbar {
   position: relative; // 作为蛇图的定位参照
 }
 
-// 头像压在蛇图上方，并设为半透明
-.home-avatar {
-  position: relative;
-  z-index: 1;
+// 头像压在蛇图上方，并设为半透明（宽度放大 1.5 倍：6rem → 9rem）
+.home-profile .home-avatar img {
+  width: 9rem !important;
+  height: auto !important;
+  opacity: 0.72;
+  transition: opacity 0.3s ease;
 
-  img {
-    opacity: 0.72;
-    transition: opacity 0.3s ease;
-
-    &:hover {
-      opacity: 1;
-    }
+  &:hover {
+    opacity: 1;
   }
 }
 
 // 贪吃蛇：绝对定位叠在头像位置，横向铺开
 .avatar-snake {
   position: absolute;
-  top: 36px; // 与头像垂直居中对齐，改这里可上下微调
+  top: 33px; // 与头像垂直居中对齐，改这里可上下微调
   left: 50%;
   transform: translateX(-50%);
-  width: 480px;
+  width: 720px;
   max-width: 92vw;
   z-index: 0; // 在头像后面
   pointer-events: none;
