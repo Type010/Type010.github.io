@@ -332,7 +332,7 @@ copyright = ""
       # 头像地址
       avatarURL = "https://avatars.githubusercontent.com/u/229056701?v=4"
       title = "MooeのBlog"
-      subtitle = "这是一个小小小笔记本"
+      subtitle = "这里有一个小小笔记"
       typeit = true
       social = true
     [params.home.posts]
