@@ -4,8 +4,6 @@ date: 2026-09-19T10:00:00+08:00
 draft: false
 ---
 
-欢迎来到我的博客，这里记录学习、技术与生活。
-
 <div class="github-snake">
   <img class="snake-light" src="https://cdn.jsdelivr.net/gh/Type010/Type010.github.io@output/github-snake.svg" alt="GitHub 贡献图" loading="lazy">
   <img class="snake-dark" src="https://cdn.jsdelivr.net/gh/Type010/Type010.github.io@output/github-snake-dark.svg" alt="GitHub 贡献图" loading="lazy">

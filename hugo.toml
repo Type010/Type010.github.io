@@ -74,10 +74,18 @@ copyright = ""
 [menus]
 
 [[menus.main]]
+  identifier = "home"
+  name = "主页"
+  url = "/"
+  weight = 1
+  [menus.main.params]
+    icon = "fa-solid fa-house"
+
+[[menus.main]]
   identifier = "posts"
   name = "文章"
   url = "/posts/"
-  weight = 1
+  weight = 2
   [menus.main.params]
     icon = "fa-solid fa-pencil-alt"
 
@@ -85,7 +93,7 @@ copyright = ""
   identifier = "archives"
   name = "归档"
   url = "/archives/"
-  weight = 2
+  weight = 3
   [menus.main.params]
     icon = "fa-solid fa-archive"
 
@@ -93,7 +101,7 @@ copyright = ""
   identifier = "categories"
   name = "分类"
   url = "/categories/"
-  weight = 3
+  weight = 4
   [menus.main.params]
     icon = "fa-solid fa-folder-tree"
 
@@ -101,15 +109,23 @@ copyright = ""
   identifier = "tags"
   name = "标签"
   url = "/tags/"
-  weight = 4
+  weight = 5
   [menus.main.params]
     icon = "fa-solid fa-tags"
+
+[[menus.main]]
+  identifier = "netdisk"
+  name = "网盘"
+  url = "http://op.mooe.top"
+  weight = 6
+  [menus.main.params]
+    icon = "fa-solid fa-cloud"
 
 [[menus.main]]
   identifier = "about"
   name = "关于"
   url = "/about/"
-  weight = 5
+  weight = 7
   [menus.main.params]
     icon = "fa-solid fa-circle-info"
 
@@ -278,12 +294,9 @@ copyright = ""
     [params.header.title]
       # 导航栏标题，留空则使用站点标题
       name = "MooeのBlog"
-      # 标题前的图标：GitHub 图标 + 跳转
-      pre = "<a href='https://github.com/Type010' target='_blank' rel='noopener noreferrer' class='header-github-link' title='GitHub'><i class='fa-brands fa-github'></i></a>"
+      # 标题前的图标（留空则不显示）
+      pre = ""
       typeit = false
-    [params.header.subtitle]
-      name = "这是一个小小小笔记本"
-      typeit = true
 
   # ---------------------------------------------------------------------------
   # 页脚

@@ -38,25 +38,31 @@ div::-webkit-scrollbar {
 }
 
 // ---- 顶部导航栏：淡蓝色毛玻璃 ----
+// 透明度调低、模糊加大，滚动时内容从下方穿过，玻璃质感更明显
 #header-desktop,
 #header-mobile {
-  background-color: rgba(214, 234, 248, 0.72) !important;
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-bottom: 1px solid rgba(150, 195, 230, 0.35);
+  background-color: rgba(214, 234, 248, 0.32) !important;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(150, 195, 230, 0.4);
+}
+
+// 导航栏内部容器保持透明，避免遮挡毛玻璃效果
+#header-desktop .header-wrapper,
+#header-mobile .header-wrapper {
+  background-color: transparent !important;
 }
 
 html[data-theme="dark"] {
   #header-desktop,
   #header-mobile {
-    background-color: rgba(28, 44, 60, 0.72) !important;
+    background-color: rgba(28, 44, 60, 0.38) !important;
     border-bottom-color: rgba(120, 165, 205, 0.22);
   }
 }
 
-// 导航栏标题前的 GitHub 图标
-.header-github-link {
-  color: inherit;
+// ---- 站名点击回主页（主题已链接到首页，这里补上悬停反馈）----
+.header-title > a {
   text-decoration: none;
   transition: opacity 0.2s ease;
 
