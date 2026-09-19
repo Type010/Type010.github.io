@@ -117,9 +117,9 @@ div::-webkit-scrollbar {
   z-index: 1;
 }
 
-// 头像半透明，并放大 1.5 倍（6rem → 9rem）
+// 头像半透明，并放大（主题默认 6rem，这里放大约 2 倍）
 .home-profile .home-avatar img {
-  width: 9rem !important;
+  width: 12rem !important;
   height: auto !important;
   opacity: 0.72;
   transition: opacity 0.3s ease;
@@ -132,11 +132,11 @@ div::-webkit-scrollbar {
 // 贪吃蛇：绝对定位叠在头像位置，横向铺开
 .avatar-snake {
   position: absolute;
-  top: 33px; // 与头像垂直居中对齐，改这里可上下微调
+  top: 60px; // 与头像垂直居中对齐，改这里可上下微调
   left: 50%;
   transform: translateX(-50%);
-  width: 720px;
-  max-width: 92vw;
+  width: 100%;
+  max-width: 900px;
   z-index: 0; // 在头像后面
   pointer-events: none;
 
