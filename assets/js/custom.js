@@ -31,10 +31,10 @@
   let timer;
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) {
-      document.title = "😂 去哪里了！";
+      document.title = "zako~zako~キモい。";
       clearTimeout(timer);
     } else {
-      document.title = "😍 欢迎回来！";
+      document.title = "お兄~daisuki！";
       timer = setTimeout(function () {
         document.title = originTitle;
       }, 2000);
