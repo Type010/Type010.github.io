@@ -3,6 +3,8 @@ title: 使用Stellar来让你的iQOO11系列获得临时ROOT
 date: 2026-09-19T20:00:00+08:00
 draft: false
 categories:
+  - 教程
+tags:
   - 漏洞
   - Root
 ---
