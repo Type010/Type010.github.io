@@ -250,6 +250,9 @@ copyright = ""
   description = "记录学习、技术与生活的个人博客"
   # 站点关键词
   keywords = ["Hugo", "FixIt", "博客"]
+  # 资源指纹：给 CSS/JS 文件名加上内容哈希，文件一改名字就变，
+  # 浏览器和 CDN 都不会再命中旧缓存
+  fingerprint = "sha256"
   # 默认主题 ["light", "dark", "auto"]
   defaultTheme = "auto"
   # 日期格式
